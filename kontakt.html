@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .contact-container {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="index.html">
+                <img src="bilder/logo.png" alt="Logo" width="75" height="75" class="d-inline-block align-middle">
+                <span class="align-middle">Kleiderspenden-Portal</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="unseremission.html">Unsere Mission</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container contact-container">
+        <h1>Kontakt</h1>
+        <p>Wir freuen uns über Ihre Nachricht. Bitte füllen Sie das folgende Formular aus, um mit uns in Kontakt zu treten.</p>
+
+        <form id="kontaktForm">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">E-Mail</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="betreff">Betreff</label>
+                <input type="text" class="form-control" id="betreff" name="betreff" required>
+            </div>
+            <div class="form-group">
+                <label for="nachricht">Nachricht</label>
+                <textarea class="form-control" id="nachricht" name="nachricht" rows="5" required></textarea>
+            </div>
+				<div class="form-group form-check">
+					<input type="checkbox" class="form-check-input" id="datenschutz" required>
+					<label class="form-check-label" for="datenschutz">Ich habe die <a href="datenschutz.html">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zu.</label>
+				</div>
+            <button type="submit" class="btn btn-primary" id="submitButtonKontakt">Absenden</button>
+        </form>
+    </main>
+
+    <!-- Pop-up Fenster bei erfolgreichem Versand der Nachricht -->
+    <div id="successPopupKontakt" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Nachricht erfolgreich gesendet!</h5>
+                </div>
+                <div class="modal-body">
+                    <p>Vielen Dank für Ihre Nachricht. Wir werden uns in Kürze bei Ihnen melden.</p>
+                    <p>Sie werden nun automatisch zur Startseite weitergeleitet.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-center text-lg-start mt-5">
+        <div class="text-center p-3">
+            <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a>
+        </div>
+    </footer>
+
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="script_kontakt.js"></script>
+
+</body>
+</html>

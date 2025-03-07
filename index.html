@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kleiderspenden-Portal</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">
+                <img src="bilder/logo.png" alt="Logo" width="75" height="75" class="d-inline-block align-middle">
+                <span class="align-middle">Kleiderspenden-Portal</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="unseremission.html">Unsere Mission</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mt-5">
+        <h1>❤️ Kleidung spenden. Gemeinschaft stärken.</h1>
+        <p>Mithilfe unserem Kleiderspenden-Portal verwandeln wir Ihre aussortierten Kleider in direkte Hilfe: Jedes Stück schenkt Würde, Sicherheit und neue Chancen – für Menschen, die Unterstützung am dringendsten brauchen. Gemeinsam schaffen wir Sicherheit durch Solidarität.</p>
+        <p>Im nachfolgenden Formular können Sie kinderleicht Ihre Spende registrieren und selbst wählen, in welche Region Ihre Spende gelangen soll.</p>
+
+        <form id="spendenForm">
+            <div class="form-group">
+                <label for="spendenArt">Art der Kleidung</label>
+                <input type="text" class="form-control" id="spendenArt" name="spendenArt" required>
+            </div>
+            <div class="form-group">
+                <label for="krisenRegion">Zielregion</label>
+                <select class="form-control" id="zielRegion" name="zielRegion" required>
+                    <option value="africa">Afrika</option>
+                    <option value="germany">Deutschland</option>
+                    <option value="tunesia">Tunesien</option>
+                    <option value="india">Indien</option>
+                    <option value="ukraine">Ukraine</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="lieferOption">Lieferoption</label>
+                <select class="form-control" id="lieferOption" name="lieferOption" required>
+                    <option value="uebergabe">Abgabe bei der Geschäftsstelle</option>
+                    <option value="abholung">Abholung durch Sammlerfahrzeug</option>
+                </select>
+            </div>
+            <div id="abholAdresse" class="form-group" style="display: none;">
+                <label for="strasse">Straße und Hausnummer</label>
+                <input type="text" class="form-control" id="strasse" name="strasse">
+            </div>
+            <div id="plzAdresse" class="form-group" style="display: none;">
+                <label for="plz">PLZ</label>
+                <input type="text" class="form-control" id="plz" name="plz">
+                <small id="plzError" class="form-text text-danger" style="display: none;">Die Abholung ist nur in PLZ-Gebieten, die mit 54 beginnen, möglich.</small>
+            </div>
+            <div id="abholOrt" class="form-group" style="display: none;">
+                <label for="ort">Ort</label>
+                <input type="text" class="form-control" id="ort" name="ort">
+            </div>
+			<div class="form-group form-check mt-3">
+				<input type="checkbox" class="form-check-input" id="datenschutz" required>
+				<label class="form-check-label" for="datenschutz">Ich habe die <a href="datenschutz.html">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zu.</label>
+			</div>
+            <button type="submit" class="btn btn-primary" id="submitButton" disabled>Jetzt spenden!</button>
+        </form>
+    </main>
+
+    <!-- Pop-up Fenster bei erfolgreicher Spende -->
+    <div id="successPopup" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Spende erfolgreich registriert</h5>
+                </div>
+                <div class="modal-body">
+                    <p>Vielen Dank für Ihre Spende! Ihre Spende wurde erfolgreich registriert.</p>
+                    <hr>
+                    <h6>Zusammenfassung Ihrer Spende:</h6>
+                    <ul>
+                        <li><strong>Art der Kleidung:</strong> <span id="summary-art"></span></li>
+                        <li><strong>Zielregion:</strong> <span id="summary-zielregion"></span></li>
+                        <li><strong>Lieferoption:</strong> <span id="summary-lieferoption"></span></li>
+                        <li id="summary-adresse-container" style="display: none;"><strong>Adresse:</strong> <span id="summary-adresse"></span></li>
+                        <li><strong>Datum und Uhrzeit:</strong> <span id="summary-datetime"></span></li>
+                    </ul>
+                    <p>Sie werden in Kürze automatisch zurück zur Startseite weitergeleitet.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="container mt-5">
+        <h1>Bilder sagen mehr als 1000 Wort - unsere Zielregionen</h1>
+                        <!-- Bilder Carousel -->
+                        <div id="slider" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="bilder/afrika.jpg" class="d-block w-100" alt="Bild 1">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h5>Dieses Foto zeigt eine Siedlung in Afrika, in der viele Menschen unter schwierigen Bedingungen leben. Hier fehlt es oft an grundlegenden Dingen wie Kleidung, die schützt und Würde verleiht. Mit Ihrer Kleiderspende können wir genau solche Gemeinschaften unterstützen und den Menschen vor Ort ein Stück Sicherheit und Lebensqualität schenken. Jeder Beitrag macht einen Unterschied!</h5>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="bilder/ukraine.jpg" class="d-block w-100" alt="Bild 2">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h5>Jede Kleiderspende zählt! Ob Winterjacke, Schuhe oder Kinderbekleidung – Ihre gut erhaltenen Textilien schenken Schutzsuchenden aus der Ukraine nicht nur Wärme, sondern auch Würde. Vom Rems-Murr-Kreis bis in die Frontgebiete des Donbas helfen Ihre Sachspenden direkt: Sie werden sortiert, verladen und an Bedürftige verteilt, die alles verloren haben</h5>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="bilder/indien.jpg" class="d-block w-100" alt="Bild 3">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h5>Dieses Bild aus Indien zeigt eine dicht besiedelte informelle Siedlung. Viele Menschen in diesen Vierteln kämpfen täglich mit Armut und unzureichender Versorgung, auch mit Kleidung. Ihre Kleiderspende kann hier einen echten Unterschied machen – sie schenkt Schutz, Würde und neue Perspektiven für diejenigen, die es am meisten brauchen.</h5>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="bilder/tunesien.jpg" class="d-block w-100" alt="Bild 4">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h5>Diese Aufnahme aus Tunesien zeigt die lokalen Gemeinschaften, die von Ihrer Kleiderspende profitieren. In vielen Regionen des Landes fehlt es an grundlegender Versorgung. Ihre Spenden helfen, unmittelbare Bedürfnisse zu decken und unterstützen die Menschen dabei, ein Leben in Würde zu führen</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    </section>
+
+    <footer class="bg-dark text-center text-lg-start mt-5">
+        <div class="text-center p-3">
+            <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a> | <a href="kontakt.html">Kontakt</a>
+        </div>
+    </footer>
+
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>    
+
+</body>
+</html>
